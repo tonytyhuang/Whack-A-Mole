@@ -18,7 +18,7 @@ public class Squirrel2_Move : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (loopCount % 27 == 0)
+        if (loopCount % 81 == 0)
         {
             GoUpDown();
             upDown++;
