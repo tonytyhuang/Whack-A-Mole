@@ -7,15 +7,17 @@ public class Squirrel0_Move : MonoBehaviour
 {
     private int loopCount;
     private int upDown;
-    private float speed;
-    public Text displayLoops;
+    public int score;
+    int totalScore;
+    public Text displayScore;
 
     // Use this for initialization
     void Start()
     {
+        totalScore = 0;
         loopCount = 0;
         upDown = 0;
-        speed = 1f;
+        score = 0;
     }
 
     // Update is called once per frame
@@ -27,26 +29,29 @@ public class Squirrel0_Move : MonoBehaviour
             upDown++;
         }
         loopCount++;
-        displayLoops.text = "Loops: " + loopCount.ToString();
+        totalScore = score + Squirrel1_Move.score + Squirrel2_Move.score + Squirrel3_Move.score + Squirrel4_Move.score + Squirrel5_Move.score;
+        displayScore.text = "Score: " +totalScore.ToString();
     }
 
     void GoUpDown()
     {
         if (upDown % 3 == 0)
         {
-            gameObject.transform.Translate(0, 10.0f, 0);
+            gameObject.transform.Translate(0, 23.0f, 0);
         }
         else if (upDown % 3 == 2)
         {
-            gameObject.transform.Translate(0, -10.0f, 0);
+            gameObject.transform.Translate(0, -23.0f, 0);
         }
     }
 
-    private void OnMouseOver()
+    void OnMouseOver()
     {
-        if (Input.GetMouseDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-
+            gameObject.transform.Translate(0, -23.0f, 0);
+            upDown = -1;
+            score++;
         }
     }
 }
